@@ -1,0 +1,21 @@
+{
+    "name": "1131/blog",
+    "description": "blog",
+    "authors": [
+        {
+            "name": "Romanenko and Sir",
+            "email": "dima.sirotkin.1999@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\" : "core/",
+            "Vendor\\": "vendor/"
+        }
+    },
+    "require": {
+        "twig/twig": "^2.0",
+        "noahbuscher/macaw": "dev-master"
+
+    }
+}
