@@ -17,6 +17,7 @@
                 Advanced Tables
             </div>
             <div class="panel-body">
+                <form method="post" action="/admin/article-delete/">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -36,14 +37,16 @@
                             <td>{{article.slug}}</td>
                             <td class="center">{{article.data}}</td>
                             <td class="center">
-                                <a href="/admin/article-edit/{{article.id}}" class="btn btn-success" role="button"><i class="fa fa-pencil fa-lg"></i>
-                                </a>
+                                <a href="/admin/article-edit/{{article.id}}" class="btn btn-success btn-xs" role="button"><i class="fa fa-pencil fa-fw"></i></a>
+                                <button class="btn btn-danger btn-xs" type="submit" value="{{article.id}}" name="btnartdelete"><i class="fa fa-trash-o fa-fw"></i>
+                                </button>
                             </td>
                         </tr>
                         {% endfor %}
 
                         </tbody>
                     </table>
+                </form>
                 </div>
 
             </div>

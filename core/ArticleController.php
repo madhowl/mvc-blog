@@ -16,7 +16,7 @@ class ArticleController
 
     public function __construct()
     {
-        $this->Model= new Model('article');
+        $this->Model= new Model('Article');
         $this->Category= new Categoty('category');
         $this->View = new View();
     }

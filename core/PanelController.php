@@ -19,7 +19,7 @@ class PanelController
     {
         $this->Category = new Category('category');
         $this->View = new View();
-        $this->Article = new Article('article');
+        $this->Article = new Article('Article');
     }
 
     public function dashboard()
@@ -40,16 +40,25 @@ class PanelController
         $this->View->addArticle('Создать новую статью', '', $this->Category->out);
     }
 
-    public function hell()
-    {
-
-
-        $this->View->hell('Создать новую статью', '', '');
-    }
-
     public function articleAdd1()
     {
         $this->Article->articleAdd();
+
+    }
+
+    public function articleEdit($id)
+    {
+        $this->Category->findAll();
+        $this->Article->findById($id);
+        $this->View->editArticle('Редактировать статью', $this->Article->out, $this->Category->out);
+    }
+    public function articleEdit1()
+    {
+        $this->Article->articleEdit();
+
+    }public function articleDelete()
+    {
+        $this->Article->articleDelete();
 
     }
 }

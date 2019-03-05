@@ -21,9 +21,9 @@ class PanelView extends  CoreView
         echo $this->twig->render('admin/article-form.php', ['title' => $title,'articles'=>$articles, 'category'=>$category] );
     }
 
-    public function editor($title, $articles, $category)
+    public function editArticle($title, $articles, $category)
     {
-        echo $this->twig->render('admin/editor.php', ['title' => $title,'articles'=>$articles, 'category'=>$category] );
+        echo $this->twig->render('admin/edit-article.php', ['title' => $title,'articles'=>$articles, 'category'=>$category] );
     }
 
     public function hell($title, $articles, $category)
