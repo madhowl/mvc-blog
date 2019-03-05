@@ -15,6 +15,23 @@ use Core\CategoryModel as Category;
 class ArticleModel extends CoreModel
 {
     public $title;
+
+    public function articleAdd()
+    {
+        if (isset($_POST['btnartadd']))
+        {
+            $title=$_POST['title'];
+            $cat_id=$_POST['cat_id'];
+            $intro=$_POST['intro'];
+            $text=$_POST['text'];
+            $query = "INSERT INTO ".$this->table." (title, cat_id, intro, text) VALUES ('$title', '$cat_id', '$intro','$text' ) ";
+            $result = $this->db->query($query);
+            //Serv::dbg($query);
+            Serv::showAlert('ok');
+            Serv::goUri('/panel');
+        }
+    }
+
     public function titleToSlag()/// перенести в COreModel
     {
         $query = "SELECT * FROM " . $this->table;
