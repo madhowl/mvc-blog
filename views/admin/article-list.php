@@ -33,7 +33,7 @@
                         {% for article in articles %}
                         <tr class="odd gradeX">
                             <td>{{article.title}}</td>
-                            <td></td>
+                            <td><img style="width: 120px" src="{{article.image}}"></td>
                             <td>{{article.slug}}</td>
                             <td class="center">{{article.data}}</td>
                             <td class="center">
