@@ -16,7 +16,7 @@
 
             "Admin\\" : "app/admin/",
 
-            "Core\\" : "app/core/",
+            "Core\\" : "core/",
             "Vendor\\": "vendor/"
         }
     },

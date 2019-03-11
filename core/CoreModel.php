@@ -24,6 +24,16 @@ class CoreModel
         $this->table = $table;
     }
 
+    public function count()
+    {
+        $query = "SELECT COUNT(*) AS c FROM ".$this->table;
+        $result = $this->db->query($query);
+        $count = $result->fetch_object()->c;
+        $result->free();
+        return $count;
+
+    }
+
     /**
      * нет экранирования!!!!!!!
      *

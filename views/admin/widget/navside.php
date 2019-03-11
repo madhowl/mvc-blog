@@ -16,7 +16,7 @@
                 <a  href="/admin/article-list"><i class="fa fa-list fa-3x"></i> Список статей </a>
             </li>
             <li  >
-                <a  href="/admin/article-add"><i class="fa fa-edit fa-3x"></i> Добавить катугорию </a>
+                <a  href="/admin/article-add"><i class="fa fa-edit fa-3x"></i> Добавить категорию </a>
             </li>
             <li>
                 <a  href="/admin/article-list"><i class="fa fa-list-alt fa-3x"></i> Список категорий </a>

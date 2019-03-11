@@ -14,6 +14,10 @@ use NoahBuscher\Macaw\Macaw;
 
 Macaw::get('/', 'Core\ArticleController@ShowAllPost');
 
+
+
+Macaw::get('/admin/count', 'Core\ArticleController@ArticleCount');
+
 Macaw::get('/admin/', 'Core\PanelController@dashboard');
 Macaw::get('/admin/dashboard', 'Core\PanelController@dashboard');
 Macaw::get('/admin/article-list', 'Core\PanelController@showArticleList');

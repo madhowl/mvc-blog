@@ -17,7 +17,7 @@
                     <i class="fa fa-pencil-square-o"></i>
                 </span>
             <div class="text-box" >
-                <p class="main-text">120 Статей Мы создали за все время</p>
+                <p class="main-text">Количество статей на сайте - {{articleCount}}</p>
 
             </div>
         </div>
@@ -28,7 +28,7 @@
                     <i class="fa fa-bars"></i>
                 </span>
             <div class="text-box" >
-                <p class="main-text">30 Категорий на сайте</p>
+                <p class="main-text">Количество категорий на сайте - {{categoryCount}}</p>
 
             </div>
         </div>

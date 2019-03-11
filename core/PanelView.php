@@ -7,9 +7,9 @@ use Core\CoreView;
 
 class PanelView extends  CoreView
 {
-    public function dashboard($title, $articles, $category)
+    public function dashboard($title, $articleCount, $categoryCount)
     {
-        echo $this->twig->render('admin/dashboard.php', ['title' => $title,'articles'=>$articles, 'category'=>$category] );
+        echo $this->twig->render('admin/dashboard.php', ['title' => $title,'articleCount'=>$articleCount, 'categoryCount'=>$categoryCount] );
     }
     public function articleList($title, $articles, $category)
     {

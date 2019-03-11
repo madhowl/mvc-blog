@@ -19,13 +19,14 @@ class PanelController
     {
         $this->Category = new Category('category');
         $this->View = new View();
-        $this->Article = new Article('Article');
+        $this->Article = new Article('article');
     }
 
     public function dashboard()
     {
-        //$this->Article->all();
-        $this->View->dashboard('Статистика', $this->Article->out, '');
+        $articleCount = $this->Article->count();
+        $categoryCount = $this->Category->count();
+        $this->View->dashboard('Статистика', $articleCount, $categoryCount);
     }
     public function showArticleList()
     {
