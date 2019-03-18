@@ -18,8 +18,7 @@
         <a href="/article/{{article.id}}" class="btn btn-primary">Читать полностью &rarr;</a>
     </div>
     <div class="card-footer text-muted">
-        Posted on {{article.data}} by
-        <a href="#">Start Bootstrap</a>
+        Posted on {{article.data}}
     </div>
 </div>
 {% endfor %}
@@ -40,12 +39,13 @@
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4">
 
+    <!-- Search Widget -->
+    {% include '/blog/widget/search.php' %}
     <!-- Categories Widget -->
     {% include '/blog/widget/categories.php' %}
     <!-- Side Widget -->
     {% include '/blog/widget/side.php' %}
-    <!-- Search Widget -->
-    {% include '/blog/widget/search.php' %}
+
 
 </div>
 </div>

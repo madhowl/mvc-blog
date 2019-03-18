@@ -7,10 +7,22 @@ use Core\CoreView;
 
 class PanelView extends  CoreView
 {
-    public function dashboard($title, $articleCount, $categoryCount)
+
+
+
+    public function showLoginForm($title)
     {
-        echo $this->twig->render('admin/dashboard.php', ['title' => $title,'articleCount'=>$articleCount, 'categoryCount'=>$categoryCount] );
+        echo $this->twig->render('admin/login.php', ['title' => $title]);
     }
+
+
+    public function dashboard($title, $articles, $category ,$lastArticles)
+    {
+        echo $this->twig->render('admin/dashboard.php', ['title' => $title,'articles'=>$articles, 'category'=>$category, 'lastArticles'=>$lastArticles] );
+    }
+
+
+
     public function articleList($title, $articles, $category)
     {
         echo $this->twig->render('admin/article-list.php', ['title' => $title,'articles'=>$articles, 'category'=>$category] );
@@ -25,6 +37,25 @@ class PanelView extends  CoreView
     {
         echo $this->twig->render('admin/edit-article.php', ['title' => $title,'articles'=>$articles, 'category'=>$category] );
     }
+
+
+
+    public function categoryList($title, $category)
+    {
+        echo $this->twig->render('admin/cat-list.php', ['title' => $title,'category'=>$category]);
+    }
+
+    public function addCategory($title, $category)
+    {
+        echo $this->twig->render('admin/cat-form.php', ['title' => $title,'category'=>$category]);
+    }
+
+    public function editCategory($title, $category)
+    {
+        echo $this->twig->render('admin/edit-cat.php', ['title' => $title,'category'=>$category]);
+    }
+
+
 
     public function hell($title, $articles, $category)
     {

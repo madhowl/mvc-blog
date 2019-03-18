@@ -1,4 +1,5 @@
 <?php
+session_start();
 @define('ABSPATH', str_replace('\\', '/', dirname(__FILE__)));
 require_once ('./config/db.php');
 // загрузка автозагрузчика
@@ -11,27 +12,33 @@ use NoahBuscher\Macaw\Macaw;
 
 
 
+Macaw::post('/admin/login', 'Core\AuthClass@login');
+Macaw::get('/admin/login', 'Core\PanelController@loginForm');
+Macaw::get('/admin/logout', 'Core\PanelController@logout');
 
 Macaw::get('/', 'Core\ArticleController@ShowAllPost');
 
 
-
-Macaw::get('/admin/count', 'Core\ArticleController@ArticleCount');
-
-Macaw::get('/admin/', 'Core\PanelController@dashboard');
+Macaw::get('admin/', 'Core\PanelController@dashboard');
 Macaw::get('/admin/dashboard', 'Core\PanelController@dashboard');
 Macaw::get('/admin/article-list', 'Core\PanelController@showArticleList');
-Macaw::get('/admin/article-add', 'Core\PanelController@articleAdd');
-Macaw::get('/admin/article-edit/(:num)', 'Core\PanelController@articleEdit');
+Macaw::get('/admin/article-add', 'Core\PanelController@articleAddForm');
+Macaw::get('/admin/article-edit/(:num)', 'Core\PanelController@articleEditForm');
 
 
 Macaw::get('page', 'Core\ArticleController@lol');// auto slug
 Macaw::get('article/(:num)', 'Core\ArticleController@showSinglePost');
-Macaw::post('/admin/articleadd', 'Core\PanelController@articleAdd1');
-Macaw::post('/admin/articleedit', 'Core\PanelController@articleEdit1');
+Macaw::post('/admin/articleadd', 'Core\PanelController@articleAdd');
+Macaw::post('/admin/articleedit', 'Core\PanelController@articleEdit');
 Macaw::post('/admin/article-delete/', 'Core\PanelController@articleDelete');
 
-Macaw::get('cat', 'Core\CategoryController@lol');//autoslug
+Macaw::get('/admin/cat-list', 'Core\PanelController@showCategoryList');
+Macaw::get('/admin/cat-add', 'Core\PanelController@categoryAddForm');
+Macaw::post('/admin/cat-add', 'Core\PanelController@categoryAdd');
+Macaw::get('/admin/cat-edit/(:num)', 'Core\PanelController@categoryEditForm');
+Macaw::post('/admin/cat-edit', 'Core\PanelController@categoryEdit');
+Macaw::post('/admin/cat-delete/', 'Core\PanelController@categoryDelete');
+
 
 Macaw::get('cat/(:any)', 'Core\ArticleController@showCategoryPost');
 

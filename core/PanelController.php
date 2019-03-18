@@ -6,6 +6,8 @@ namespace Core;
 use Core\PanelView as View;
 use Core\CategoryModel as Category;
 use Core\ArticleModel as Article;
+use Core\ServiceController as Serv;
+use Core\AuthClass as Auth;
 
 class PanelController
 {
@@ -13,53 +15,120 @@ class PanelController
     public $View;
     public $Category;
     public $Article;
+    public $username;
 
 
     public function __construct()
     {
         $this->Category = new Category('category');
         $this->View = new View();
-        $this->Article = new Article('article');
+        $this->Article = new Article('Article');
+        $this->authChek();
+    }
+
+    public function loginForm()
+    {
+        $this->View->showLoginForm('Вход');
+    }
+
+    /**
+     *
+     */
+    public function login()
+    {
+        Auth::logIn();
+    }
+    public function logout()
+    {
+        Auth::logOut();
+    }
+
+    public function authChek()
+    {
+      if (Auth::checkAuth() == false)
+      {
+          //$this->loginForm();
+          //
+          $this->View->showLoginForm('Вход');
+          exit();
+      }else{
+         /* echo 'jggfdjgdj';
+          exit();*/
+      }
     }
 
     public function dashboard()
     {
-        $articleCount = $this->Article->count();
-        $categoryCount = $this->Category->count();
-        $this->View->dashboard('Статистика', $articleCount, $categoryCount);
+        $this->Article->lastArticle(6);
+        $this->View->dashboard('Статистика', $this->Article->count(), $this->Category->count(), $this->Article->out);
     }
+
+
     public function showArticleList()
     {
         $this->Article->all();
         $this->View->articleList('Список статей', $this->Article->out, '');
     }
-
-    public function articleAdd()
+    public function articleAddForm()
     {
         $this->Category->findAll();
 
         $this->View->addArticle('Создать новую статью', '', $this->Category->out);
     }
-
-    public function articleAdd1()
+    public function articleAdd()
     {
         $this->Article->articleAdd();
 
     }
-
-    public function articleEdit($id)
+    public function articleEditForm($id)
     {
         $this->Category->findAll();
         $this->Article->findById($id);
         $this->View->editArticle('Редактировать статью', $this->Article->out, $this->Category->out);
     }
-    public function articleEdit1()
+    public function articleEdit()
     {
         $this->Article->articleEdit();
 
-    }public function articleDelete()
+    }
+    public function articleDelete()
     {
         $this->Article->articleDelete();
+
+    }
+
+
+    public function showCategoryList()
+    {
+        $this->Category->findAll();
+        $this->View->categoryList('Список категорий', $this->Category->out);
+    }
+    public function categoryAddForm()
+    {
+        //$this->Category->findAll();
+
+        $this->View->addCategory('Создать новую статью', '', '');
+    }
+    public function categoryAdd()
+    {
+        $this->Category->categoryAdd();
+
+    }
+    public function categoryEditForm($id)
+    {
+        $this->Category->findById($id);
+        //$this->Article->findById($id);
+        //Serv::dbg($this->Category->out);
+        $this->View->editCategory('Редактировать категорию', $this->Category->out, '');
+    }
+    public function categoryEdit()
+    {
+        $this->Category->categoryEdit();
+
+    }
+    public function categoryDelete()
+    {
+        $this->Category->categoryDelete();
 
     }
 }
